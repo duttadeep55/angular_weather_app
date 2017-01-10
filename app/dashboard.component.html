@@ -1,0 +1,94 @@
+<div class="header">
+		
+        <div class="header-top">
+			<h2><img class="whe" [src]="sunImage" alt="" />{{ city }}</h2>
+			<ul>
+				<li><p>{{ date | date:'h:mm:ss' }}</p></li>
+				<li><p class="cen">{{ date | date:'fullDate' }}</p></li>
+			</ul>
+            <!-- Rounded switch -->
+            <label class="switch">
+                <input type="checkbox" (change)="daynight()">
+                <div class="slider round"></div>
+            </label>
+
+			<div class="clear"> </div>
+		</div>
+		
+        <div class="header-bottom" *ngIf="flag==true">
+			<div class="header-bottom1" *ngFor="let info of data">
+				<div class="header-head" >
+                    <img [src]="rainImage" alt="" />
+                    <h6>{{ info.temp.min }}°C↓ {{ info.temp.max }}°C↑</h6>
+                    <div class="bottom-head">
+                        <p>{{ info.dt * 1000 | date:'EEEE' }}</p>
+                        <p>{{ info.dt * 1000 | date:'MMMd' }}</p>
+                        <p>{{ info.dt * 1000 | date:'y' }}</p>
+                        <p>{{ info.dt * 1000 | date:'jm' }}</p>
+                    </div>
+			    </div>
+			</div>
+	
+			<div class="clear"> </div>
+		</div>
+
+         <div class="header-bottom" *ngIf="flag==false">
+			<div class="header-bottom1" *ngFor="let info of data">
+				<div class="header-head" >
+                    <img [src]="daynightImage" alt="" />
+                    <h6>{{ info.temp.day }}°C {{ info.temp.night }}°C</h6>
+                    <div class="bottom-head">
+                        <p>{{ info.dt * 1000 | date:'EEEE' }}</p>
+                        <p>{{ info.dt * 1000 | date:'MMMd' }}</p>
+                        <p>{{ info.dt * 1000 | date:'y' }}</p>
+                        <p>{{ info.dt * 1000 | date:'jm' }}</p>
+                    </div>
+			    </div>
+			</div>
+	
+			<div class="clear"> </div>
+		</div>
+</div>
+
+<!--
+    <div class="content">
+
+	<div class="place">
+
+		<div id="txt">
+            {{ date | date:'h:mm:ss' }}
+        </div>
+
+		<div class="dmy">
+			{{ date | date:'fullDate' }}
+        </div>
+
+        <div class="city">
+        <p>{{ city }}</p>
+        </div>
+
+	</div>
+
+	<div class="temp">
+        <p> Min / Max </p>
+        <div class="day">          
+            <div class="mon" *ngFor="let info of data">
+                <h3>{{ info.dt * 1000 | date:'medium' }}</h3>
+                <p>{{ info.temp.min }}°C↓ {{ info.temp.max }}°C↑</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+         <div class="day">          
+            <div class="mon" *ngFor="let info of data">
+                <h3>{{ info.dt * 1000 | date:'medium' }}</h3>
+                <p>{{ info.temp.day }}°C↓ {{ info.temp.night }}°C↑</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+	</div>
+
+	<div class="clear"></div>
+	
+</div>
+-->
